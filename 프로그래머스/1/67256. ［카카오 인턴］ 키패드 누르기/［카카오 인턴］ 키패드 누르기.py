@@ -4,6 +4,7 @@ def solution(numbers, hand):
     left_number = [1, 4, 7]
     right_number = [3, 6, 9]
 
+    # 키패드 좌표 정의 - 3열(0,1,2) 4행(0,1,2,3)
     position = {
         1: (0, 0), 2: (0, 1), 3: (0, 2),
         4: (1, 0), 5: (1, 1), 6: (1, 2),
