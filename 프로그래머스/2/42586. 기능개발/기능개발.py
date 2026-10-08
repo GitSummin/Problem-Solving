@@ -1,30 +1,25 @@
+import math
+
 def solution(progresses, speeds):
     answer = []
-    days = []
+    time_lst = []
     
-    # 각 기능의 완료까지 걸리는 일수 계산
-    for progress, speed in zip(progresses, speeds):
-        day = (100 - progress + speed - 1) // speed
-        days.append(day)
+    for i in range(len(progresses)):
+        time = float((100 - progresses[i]) / speeds[i])
+        time = math.ceil(time)
+        time_lst.append(time)
     
-    # 첫 번째 기능의 배포일
-    deploy_day = days[0]
+    deploy_day = time_lst[0]
     count = 1
     
-    # 두 번째 기능부터 확인
-    for day in days[1:]:
-        
-        # 앞 기능의 배포일까지 이미 완료된다면 함께 배포
-        if day <= deploy_day:
+    for i in range(1, len(time_lst)):
+        if time_lst[i] <= deploy_day:
             count += 1
-        
-        # 앞 기능보다 늦게 끝난다면 새로운 배포 시작
         else:
             answer.append(count)
-            deploy_day = day
+            deploy_day = time_lst[i]
             count = 1
-    
-    # 마지막 묶음 추가
+            
     answer.append(count)
     
     return answer
