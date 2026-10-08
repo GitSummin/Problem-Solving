@@ -1,9 +1,14 @@
 def solution(sizes):
-    max_width = 0
-    max_height = 0
+    
+    # 긴 길이를 가로로
+    # 짧은 길이를 세로로
+    long_lst = []
+    short_lst = []
     
     for w, h in sizes:
-        max_width = max(max_width, max(w, h))
-        max_height = max(max_height, min(w, h))
+        long_lst.append(max(w, h))
+        short_lst.append(min(w, h))
     
-    return max_width * max_height
+    result = max(long_lst) * max(short_lst)
+    
+    return result
