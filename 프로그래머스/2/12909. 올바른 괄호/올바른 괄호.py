@@ -1,13 +1,12 @@
 def solution(s):
-    count = 0
+    stack = []
     
-    for i in range(len(s)):
-        if s[i] == "(":
-            count += 1
+    for word in s:            
+        if word == "(":
+            stack.append(word)
         else:
-            count -= 1
+            if not stack:
+                return False
+            stack.pop()
             
-        if count < 0:
-            return False
-    
-    return count == 0
+    return len(stack) == 0
